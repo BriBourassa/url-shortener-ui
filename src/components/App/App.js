@@ -33,9 +33,11 @@ const App = () => {
           'Content-type': 'application/json'
         }
       });
+      console.log(JSON.stringify(newUrl), 'new url!')
       const postedUrl = await response.json()
-      setUrls([...allUrls, postedUrl])
-      console.log(allUrls)
+
+      // setUrls([...allUrls, postedUrl])
+      console.log(postedUrl)
     } catch(error) {
       setError(error.message)
     }

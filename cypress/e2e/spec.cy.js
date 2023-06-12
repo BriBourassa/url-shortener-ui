@@ -37,6 +37,7 @@ describe('Main spec', () => {
       .should('have.value', 'websitedotcom!')
     cy.get('button').eq(0).click()
     cy.get('.url').should('have.length', 3)
+      .get('.url').eq(2).contains('hello!')
   })
 
 })

@@ -3,29 +3,30 @@ import React, { useState } from 'react';
 const UrlForm = ({ addUrl, postNewUrl }) => {
   const [formData, setFormData] = useState({
     title: '',
-    urlToShorten: ''
+    long_url: ''
   })
 
   const handleNameChange = e => {
-    e.preventDefault();
+    // e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     const newUrl = {
-      id:Date.now(),
+      // id:Date.now(),
       ...formData
     }
+    console.log(newUrl, 'this is confusing')
+    const newStuff = postNewUrl(newUrl)
+    // console.log(newStuff)
     addUrl(newUrl)
-    postNewUrl(newUrl)
     clearInputs();
   }
 
   const clearInputs = () => {
     setFormData({title: '', urlToShorten: ''});
   }
-
 
     return (
       <form>
@@ -40,8 +41,8 @@ const UrlForm = ({ addUrl, postNewUrl }) => {
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='urlToShorten'
-          value={formData.urlToShorten}
+          name='long_url'
+          value={formData.long_url}
           onChange={handleNameChange}
         />
 
@@ -50,7 +51,6 @@ const UrlForm = ({ addUrl, postNewUrl }) => {
         </button>
       </form>
     )
-  
-}
+};
 
 export default UrlForm;
