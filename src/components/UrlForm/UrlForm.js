@@ -7,14 +7,12 @@ const UrlForm = ({ addUrl, postNewUrl }) => {
   })
 
   const handleNameChange = e => {
-    // e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     const newUrl = {
-      // id:Date.now(),
       ...formData
     }
     console.log(newUrl, 'this is confusing')

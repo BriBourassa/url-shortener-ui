@@ -35,8 +35,7 @@ const App = () => {
       });
       console.log(JSON.stringify(newUrl), 'new url!')
       const postedUrl = await response.json()
-
-      // setUrls([...allUrls, postedUrl])
+      setUrls([...allUrls, postedUrl])
       console.log(postedUrl)
     } catch(error) {
       setError(error.message)
@@ -54,7 +53,6 @@ const App = () => {
           {error.name}: {error.message}
         </div>
       )}
-
       <UrlContainer allUrls={allUrls} />
     </main>
   );
