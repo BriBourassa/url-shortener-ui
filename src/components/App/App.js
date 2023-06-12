@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     try {
       getUrls().then((data) => {
-        console.log(data.urls)
+        // console.log(data.urls)
         setUrls(data.urls);
       });
     } catch (err) {
@@ -23,11 +23,29 @@ const App = () => {
     setUrls([...allUrls, newUrl])
   }
 
+  const postNewUrl = async (newUrl) => {
+    const url = "http://localhost:3001/api/v1/urls"
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(newUrl),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+      const postedUrl = await response.json()
+      setUrls([...allUrls, postedUrl])
+      console.log(allUrls)
+    } catch(error) {
+      setError(error.message)
+    }
+  }
+
   return (
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm addUrl={addUrl}/>
+        <UrlForm addUrl={addUrl} postNewUrl={postNewUrl} />
       </header>
       {error && (
         <div className="error-text">

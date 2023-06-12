@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UrlForm = ({ addUrl }) => {
+const UrlForm = ({ addUrl, postNewUrl }) => {
   const [formData, setFormData] = useState({
     title: '',
     urlToShorten: ''
@@ -18,6 +18,7 @@ const UrlForm = ({ addUrl }) => {
       ...formData
     }
     addUrl(newUrl)
+    postNewUrl(newUrl)
     clearInputs();
   }
 
