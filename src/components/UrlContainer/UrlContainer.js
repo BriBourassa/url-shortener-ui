@@ -1,8 +1,9 @@
 import React from 'react';
 import './UrlContainer.css';
 
-const UrlContainer = props => {
-  const urlEls = props.urls.map(url => {
+const UrlContainer = ({ allUrls }) => {
+
+  const urlEls = allUrls.map((url) => {
     return (
       <div className="url">
         <h3>{url.title}</h3>
