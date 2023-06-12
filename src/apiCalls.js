@@ -5,3 +5,5 @@ export const getUrls = () => {
         throw new Error(err)
       })
 }
+
+export default getUrls

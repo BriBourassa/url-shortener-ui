@@ -11,21 +11,31 @@ const App = () => {
   useEffect(() => {
     try {
       getUrls().then((data) => {
-        setUrls(data);
+        console.log(data.urls)
+        setUrls(data.urls);
       });
     } catch (err) {
       setError(err);
     }
   }, []);
 
+  const addUrl = (newUrl) => {
+    setUrls([...allUrls, newUrl])
+  }
+
   return (
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm />
+        <UrlForm addUrl={addUrl}/>
       </header>
+      {error && (
+        <div className="error-text">
+          {error.name}: {error.message}
+        </div>
+      )}
 
-      <UrlContainer urls={allUrls} />
+      <UrlContainer allUrls={allUrls} />
     </main>
   );
 };
